@@ -50,7 +50,7 @@ public class LiteralB {
 	final Integer subcategoryAssignedID = 2004;
 
 	@BeforeEach
-	void setupProduct(){
+	void setup(){
 		this.p = new Product();
 		//Defining OK attributes
 		this.p.setProductid(this.productAssignedID);

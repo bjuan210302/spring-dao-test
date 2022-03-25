@@ -26,15 +26,7 @@ public class ProductModelTest {
 	}
 
 	@BeforeEach
-	void setupProductModel(){
-		this.pm = new Productmodel();
-		this.pm.setProductmodelid(this.assignedID);
-
-		//Defining OK attributes
-		this.pm.setInstructions("This contains at least five characters");
-		pm.setName("This contains at least five characters");
-
-		// Mockito.when(this.PMRepo.findById(assignedID)).thenReturn(Optional.of(this.pm));
+	void setup(){
 	}
 
 

@@ -30,7 +30,7 @@ public class ProductTest {
 	}
 
 	@BeforeEach
-	void setupProduct(){
+	void setup(){
 		this.p = new Product();
 		//Defining OK attributes
 		this.p.setProductid(this.productAssignedID);
@@ -39,8 +39,6 @@ public class ProductTest {
 		this.p.setSellenddate(new Timestamp(now + 1));
 		this.p.setSize(1);
 		this.p.setWeight(new BigDecimal(0.1));
-
-		
 		
 		// Mockito.when(this.PCService.find(categoryAssignedID)).thenReturn(Optional.of(this.c));
 		// Mockito.when(this.PSCService.find(subcategoryAssignedID)).thenReturn(Optional.of(this.sc));

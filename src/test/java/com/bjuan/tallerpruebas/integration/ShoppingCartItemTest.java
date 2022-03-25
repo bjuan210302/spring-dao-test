@@ -27,7 +27,7 @@ public class ShoppingCartItemTest {
 	final Integer productAssignedID = 2016;
 
 	@BeforeEach
-	void setupProductModel(){
+	void setup(){
 		this.sci = new Shoppingcartitem();
 		this.sci.setShoppingcartid(shoppingCartID);
 		//Ok att
@@ -38,7 +38,6 @@ public class ShoppingCartItemTest {
 		this.p = new Product();
 		this.p.setProductid(productAssignedID);
 
-		
 		// Mockito.when(this.PService.find(productAssignedID)).thenReturn(Optional.of(this.p));
 		// Mockito.when(this.SCIRepo.findById(shoppingCartID)).thenReturn(Optional.of(this.sci));
 	}

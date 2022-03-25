@@ -27,7 +27,7 @@ public class ProductCostHistoryTest {
 	}
 
 	@BeforeEach
-	void setupProductModel(){
+	void setup(){
 		this.pch = new Productcosthistory();
 		
 		this.pch.setId(productHistoryAssignedID);

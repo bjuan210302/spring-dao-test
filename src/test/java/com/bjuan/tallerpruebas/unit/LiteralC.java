@@ -41,7 +41,7 @@ public class LiteralC {
 	final Integer productAssignedID = 2016;
 
 	@BeforeEach
-	void setupProductModel(){
+	void setup(){
 		this.sci = new Shoppingcartitem();
 		this.sci.setShoppingcartid(shoppingCartID);
 		//Ok att

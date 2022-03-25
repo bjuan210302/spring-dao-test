@@ -34,7 +34,7 @@ public class LiteralA {
 	final Integer assignedID = 2103;
 
 	@BeforeEach
-	void setupProductModel(){
+	void setup(){
 		this.pm = new Productmodel();
 		this.pm.setProductmodelid(this.assignedID);
 

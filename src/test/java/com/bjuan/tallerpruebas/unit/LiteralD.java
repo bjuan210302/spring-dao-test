@@ -42,7 +42,7 @@ public class LiteralD {
 	final Integer associatedProductAssignedID = 2103;
 
 	@BeforeEach
-	void setupProductModel(){
+	void setup(){
 		this.pch = new Productcosthistory();
 		this.p = new Product();
 		
