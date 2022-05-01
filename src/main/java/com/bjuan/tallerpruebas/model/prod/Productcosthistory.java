@@ -2,13 +2,17 @@ package com.bjuan.tallerpruebas.model.prod;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
-import java.sql.Timestamp;
+import java.time.LocalDate;
 
-import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQuery;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 /**
  * The persistent class for the productcosthistory database table.
@@ -19,12 +23,17 @@ import javax.persistence.NamedQuery;
 public class Productcosthistory implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-	@EmbeddedId
-	private Integer id;
+	@Id
+	@GeneratedValue(strategy = GenerationType.SEQUENCE)
+	private Integer productcosthitoryid;
 
-	private Timestamp enddate;
+	private Integer associatedproduct;
+	
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	private LocalDate enddate;
 
-	private Timestamp modifieddate;
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	private LocalDate modifieddate;
 
 	private BigDecimal standardcost;
 
@@ -36,15 +45,19 @@ public class Productcosthistory implements Serializable {
 	public Productcosthistory() {
 	}
 
-	public Timestamp getEnddate() {
+	public Integer getAssociatedproduct() {
+		return this.associatedproduct;
+	}
+
+	public LocalDate getEnddate() {
 		return this.enddate;
 	}
 
-	public Integer getId() {
-		return this.id;
+	public Integer getProductcosthitoryid() {
+		return this.productcosthitoryid;
 	}
 
-	public Timestamp getModifieddate() {
+	public LocalDate getModifieddate() {
 		return this.modifieddate;
 	}
 
@@ -56,15 +69,19 @@ public class Productcosthistory implements Serializable {
 		return this.standardcost;
 	}
 
-	public void setEnddate(Timestamp enddate) {
+	public void setAssociatedproduct(Integer associatedproduct) {
+		this.associatedproduct = associatedproduct;
+	}
+
+	public void setEnddate(LocalDate enddate) {
 		this.enddate = enddate;
 	}
 
-	public void setId(Integer id) {
-		this.id = id;
+	public void setPzvzroductcosthitoryid(Integer id) {
+		this.productcosthitoryid = id;
 	}
 
-	public void setModifieddate(Timestamp modifieddate) {
+	public void setModifieddate(LocalDate modifieddate) {
 		this.modifieddate = modifieddate;
 	}
 

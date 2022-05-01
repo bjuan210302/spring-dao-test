@@ -1,8 +1,17 @@
 package com.bjuan.tallerpruebas.model.sales;
 
 import java.io.Serializable;
-import javax.persistence.*;
 import java.sql.Timestamp;
+import java.time.LocalDate;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.NamedQuery;
+import javax.persistence.SequenceGenerator;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 
 /**
@@ -19,7 +28,8 @@ public class Shoppingcartitem implements Serializable {
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="SHOPPINGCARTITEM_SHOPPINGCARTITEMID_GENERATOR")
 	private Integer shoppingcartitemid;
 
-	private Timestamp datecreated;
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	private LocalDate datecreated;
 
 	private Timestamp modifieddate;
 
@@ -28,6 +38,8 @@ public class Shoppingcartitem implements Serializable {
 	private Integer quantity;
 
 	private Integer shoppingcartid;
+
+	private Integer associatedproduct;
 
 	public Shoppingcartitem() {
 	}
@@ -40,11 +52,11 @@ public class Shoppingcartitem implements Serializable {
 		this.shoppingcartitemid = shoppingcartitemid;
 	}
 
-	public Timestamp getDatecreated() {
+	public LocalDate getDatecreated() {
 		return this.datecreated;
 	}
 
-	public void setDatecreated(Timestamp datecreated) {
+	public void setDatecreated(LocalDate datecreated) {
 		this.datecreated = datecreated;
 	}
 
@@ -79,5 +91,12 @@ public class Shoppingcartitem implements Serializable {
 	public void setShoppingcartid(Integer shoppingcartid) {
 		this.shoppingcartid = shoppingcartid;
 	}
+	
+	public Integer getAssociatedproduct() {
+		return this.associatedproduct;
+	}
 
+	public void setAssociatedproduct(Integer associatedproduct) {
+		this.associatedproduct = associatedproduct;
+	}
 }

@@ -35,10 +35,10 @@
 						<tbody>
 							<tr th:each="instace : ${costhistory}">
 								<td class="text-info" th:text="${instace.productcosthitoryid}"></td>
-								<td class="text-info" th:text="${instace.standarcost}"></td>
-								<td class="text-info" th:text="${instace.createddate}"></td>
+								<td class="text-info" th:text="${instace.standardcost}"></td>
+								<td class="text-info" th:text="${instace.modifieddate}"></td>
 								<td class="text-info" th:text="${instace.enddate}"></td>
-								<td class="text-info" th:text="${instace.associatedProduct}"></td>
+								<td class="text-info" th:text="${instace.associatedproduct}"></td>
 								<td><a th:href="@{/costhistory/edit/{id}(id=${instace.productcosthitoryid})}"
 									class="btn btn-primary"><i class="fas fa-user-edit ml-2"></i></a></td>
 							</tr>

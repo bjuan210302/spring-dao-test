@@ -1,7 +1,5 @@
 package com.bjuan.tallerpruebas.controller.implementation;
 
-import javax.validation.Valid;
-
 import com.bjuan.tallerpruebas.model.sales.Shoppingcartitem;
 import com.bjuan.tallerpruebas.services.ShoppingCartItemService;
 
@@ -9,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -36,9 +33,9 @@ public class ShoppingcartControllerImp {
 		return "shoppingcart/add";
 	}
 	@PostMapping("/shoppingcart/add")
-	public String save(Shoppingcartitem shoppingcart, @ModelAttribute(value="associatedProduct") @Valid Integer associatedProduct, Model model, @RequestParam(value = "action", required = true) String action) {
+	public String save(Shoppingcartitem shoppingcart, Model model, @RequestParam(value = "action", required = true) String action) {
 		if (!action.equals("Cancel"))
-			service.save(shoppingcart, associatedProduct);
+			service.save(shoppingcart, shoppingcart.getAssociatedproduct());
 		return "redirect:/shoppingcart/";
 	}
 }

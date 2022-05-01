@@ -1,7 +1,6 @@
 package com.bjuan.tallerpruebas.services;
 
 import java.security.InvalidParameterException;
-import java.sql.Timestamp;
 import java.util.Optional;
 
 import com.bjuan.tallerpruebas.model.sales.Shoppingcartitem;
@@ -30,8 +29,8 @@ public class ShoppingCartItemService {
         if(sci.getQuantity() <= 0)
             throw new InvalidParameterException();
         
-        if(sci.getDatecreated().after(new Timestamp(System.currentTimeMillis())))
-            throw new InvalidParameterException();
+        // if(sci.getDatecreated().after(new Timestamp(System.currentTimeMillis())))
+        //     throw new InvalidParameterException();
 
         sci.setProductid(productAssignedID);
         this.repo.save(sci);

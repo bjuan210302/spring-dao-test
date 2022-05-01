@@ -45,10 +45,10 @@
 								th:errors="*{enddate}" class="text-danger"></span>
 						</div>
 						<div class="form-group col-md-6">
-							<label for="associatedProduct" class="col-form-label">associatedProduct</label> <input
-								type="text" th:field="${associatedProduct}" class="form-control" id="associatedProduct"
-								placeholder="associatedProduct"> <span
-								th:if="${#fields.hasErrors('${associatedProduct}')}" th:errors="${associatedProduct}"
+							<label for="associatedproduct" class="col-form-label">associatedproduct</label> <input
+								type="text" th:field="*{associatedproduct}" class="form-control"
+								placeholder="associatedproduct"> <span
+								th:if="${#fields.hasErrors('associatedproduct')}" th:errors="{associatedproduct}"
 								class="text-danger"></span>
 						</div>
 					</div>

@@ -55,8 +55,8 @@ public class ProductService {
             // categoryObject.get().addProductsubcategory(subcategoryObject.get());
         }
 
-        if(p.getSellstartdate().after(p.getSellenddate()))
-            throw new InvalidParameterException();
+        // if(p.getSellstartdate().after(p.getSellenddate()))
+        //     throw new InvalidParameterException();
 
         if(p.getSellstartdate().equals(p.getSellenddate()))
             throw new InvalidParameterException();

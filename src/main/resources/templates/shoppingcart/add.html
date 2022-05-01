@@ -25,7 +25,7 @@
 					<div class="row">
 						<div class="form-group col-md-6">
 							<label for="quantity" class="col-form-label">quantity</label> <input
-								type="text" th:field="*{quantity}" class="form-control" id="quantity"
+								type="number" th:field="*{quantity}" class="form-control" id="quantity"
 								placeholder="quantity"> <span
 								th:if="${#fields.hasErrors('quantity')}" th:errors="*{quantity}"
 								class="text-danger"></span>
@@ -38,10 +38,10 @@
 								th:errors="*{datecreated}" class="text-danger"></span>
 						</div>
 						<div class="form-group col-md-6">
-							<label for="associatedProduct" class="col-form-label">associatedProduct</label> <input
-								type="text" th:value="${associatedProduct}" class="form-control" id="associatedProduct"
-								placeholder="associatedProduct"> <span
-								th:if="${#fields.hasErrors('${associatedProduct}')}" th:errors="${associatedProduct}"
+							<label for="associatedproduct" class="col-form-label">associatedproduct</label> <input
+								type="text" th:field="*{associatedproduct}" class="form-control"
+								placeholder="associatedproduct"> <span
+								th:if="${#fields.hasErrors('associatedproduct')}" th:errors="{associatedproduct}"
 								class="text-danger"></span>
 						</div>
 					</div>
