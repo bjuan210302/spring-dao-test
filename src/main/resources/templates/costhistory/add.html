@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+<title>Add costhistoryr</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+	integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+	crossorigin="anonymous">
+<link rel="stylesheet"
+	href="https://use.fontawesome.com/releases/v5.4.1/css/all.css"
+	integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz"
+	crossorigin="anonymous">
+<link rel="stylesheet" href="../css/shards.min.css">
+</head>
+<body>
+	<div class="container my-5">
+		<h2 class="mb-5">New costhistory</h2>
+		<div class="row">
+			<div class="col-md-6">
+				<form action="#" th:action="@{/costhistory/add/}" th:object="${costhistory}"
+					method="post">
+					<div class="row">
+						<div class="form-group col-md-6">
+							<label for="standardcost" class="col-form-label">standardcost</label> <input
+								type="text" th:field="*{standardcost}" class="form-control" id="standardcost"
+								placeholder="standardcost"> <span
+								th:if="${#fields.hasErrors('standardcost')}" th:errors="*{standardcost}"
+								class="text-danger"></span>
+						</div>
+						<div class="form-group col-md-6">
+							<label for="modifieddate" class="col-form-label">createddate</label>
+							<input type="date" th:field="*{modifieddate}" class="form-control"
+								id="modifieddate" placeholder="01/01/2000"> <span
+								th:if="${#fields.hasErrors('modifieddate')}"
+								th:errors="*{modifieddate}" class="text-danger"></span>
+						</div>
+						<div class="form-group col-md-6">
+							<label for="enddate" class="col-form-label">enddate</label>
+							<input type="date" th:field="*{enddate}" class="form-control"
+								id="enddate" placeholder="01/01/2000"> <span
+								th:if="${#fields.hasErrors('enddate')}"
+								th:errors="*{enddate}" class="text-danger"></span>
+						</div>
+						<div class="form-group col-md-6">
+							<label for="associatedProduct" class="col-form-label">associatedProduct</label> <input
+								type="text" th:field="${associatedProduct}" class="form-control" id="associatedProduct"
+								placeholder="associatedProduct"> <span
+								th:if="${#fields.hasErrors('${associatedProduct}')}" th:errors="${associatedProduct}"
+								class="text-danger"></span>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-4 mt-3">
+							<input type="submit" name="action" class="btn btn-primary" value="Add">
+						</div>
+						<div class="col-md-3 mt-3">
+							<input type="reset" class="btn btn-secondary" value="Clear">
+						</div>
+						<div class="col-md-3 mt-3">
+							<input type="submit" name="action" class="btn btn-secondary" value="Cancel">
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

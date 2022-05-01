@@ -21,7 +21,7 @@ public class ProductCostHistoryService {
         this.PService = PService;
     }
 
-    public void saveProductCostHistory(Productcosthistory pch, Integer associatedProduct) {
+    public void save(Productcosthistory pch, Integer associatedProduct) {
         if(associatedProduct == null)
             throw new InvalidParameterException();
 
@@ -40,5 +40,9 @@ public class ProductCostHistoryService {
 
     public Optional<Productcosthistory> find(Integer id){
         return this.repo.findById(id);
+    }
+
+    public Iterable<Productcosthistory> findAll() {
+        return repo.findAll();
     }
 }

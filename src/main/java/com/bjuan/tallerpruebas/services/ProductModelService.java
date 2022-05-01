@@ -17,7 +17,7 @@ public class ProductModelService {
         this.repo = repo;
     }
 
-    public void saveProductModel(Productmodel pm) {
+    public void save(Productmodel pm) {
         if (pm.getName() == null)
             throw new InvalidParameterException();
         
@@ -35,6 +35,10 @@ public class ProductModelService {
 
     public Optional<Productmodel> find(Integer id) {
         return this.repo.findById(id);
+    }
+
+    public Iterable<Productmodel> findAll() {
+        return repo.findAll();
     }
 
 }

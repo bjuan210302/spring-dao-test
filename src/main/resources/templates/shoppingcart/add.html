@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+<title>Add shoppingcart</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+	integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+	crossorigin="anonymous">
+<link rel="stylesheet"
+	href="https://use.fontawesome.com/releases/v5.4.1/css/all.css"
+	integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz"
+	crossorigin="anonymous">
+<link rel="stylesheet" href="../css/shards.min.css">
+</head>
+<body>
+	<div class="container my-5">
+		<h2 class="mb-5">New shoppingcart</h2>
+		<div class="row">
+			<div class="col-md-6">
+				<form action="#" th:action="@{/shoppingcart/add/}" th:object="${shoppingcart}"
+					method="post">
+					<div class="row">
+						<div class="form-group col-md-6">
+							<label for="quantity" class="col-form-label">quantity</label> <input
+								type="text" th:field="*{quantity}" class="form-control" id="quantity"
+								placeholder="quantity"> <span
+								th:if="${#fields.hasErrors('quantity')}" th:errors="*{quantity}"
+								class="text-danger"></span>
+						</div>
+						<div class="form-group col-md-6">
+							<label for="datecreated" class="col-form-label">datecreated</label>
+							<input type="date" th:field="*{datecreated}" class="form-control"
+								id="datecreated" placeholder="01/01/2000"> <span
+								th:if="${#fields.hasErrors('datecreated')}"
+								th:errors="*{datecreated}" class="text-danger"></span>
+						</div>
+						<div class="form-group col-md-6">
+							<label for="associatedProduct" class="col-form-label">associatedProduct</label> <input
+								type="text" th:value="${associatedProduct}" class="form-control" id="associatedProduct"
+								placeholder="associatedProduct"> <span
+								th:if="${#fields.hasErrors('${associatedProduct}')}" th:errors="${associatedProduct}"
+								class="text-danger"></span>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-4 mt-3">
+							<input type="submit" name="action" class="btn btn-primary" value="Add">
+						</div>
+						<div class="col-md-3 mt-3">
+							<input type="reset" class="btn btn-secondary" value="Clear">
+						</div>
+						<div class="col-md-3 mt-3">
+							<input type="submit" name="action" class="btn btn-secondary" value="Cancel">
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

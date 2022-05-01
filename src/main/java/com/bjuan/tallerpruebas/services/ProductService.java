@@ -26,7 +26,7 @@ public class ProductService {
         this.PSCService = PSCService;
     }
 
-    public void saveProduct(Product p, Integer category, Integer subcategory) {
+    public void save(Product p, Integer category, Integer subcategory) {
         // The subcategory gets added to the category, the product gets added to the subcategory
         // The method can't add associate a category alone.
         if (subcategory == null && category != null)
@@ -73,5 +73,9 @@ public class ProductService {
 
     public Optional<Product> find(Integer id){
         return this.repo.findById(id);
+    }
+
+    public Iterable<Product> findAll() {
+        return repo.findAll();
     }
 }

@@ -20,7 +20,7 @@ public class ShoppingCartItemService {
         this.PService = PService;
     }
 
-    public void saveShoppingItem(Shoppingcartitem sci, Integer productAssignedID) {
+    public void save(Shoppingcartitem sci, Integer productAssignedID) {
         if(productAssignedID == null)
             throw new InvalidParameterException();
 
@@ -41,4 +41,7 @@ public class ShoppingCartItemService {
         return this.repo.findById(id);
     }
 
+    public Iterable<Shoppingcartitem> findAll() {
+        return repo.findAll();
+    }
 }
