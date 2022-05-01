@@ -7,6 +7,9 @@ import com.bjuan.tallerpruebas.model.prod.Product;
 import com.bjuan.tallerpruebas.model.prod.Productcosthistory;
 import com.bjuan.tallerpruebas.model.prod.Productmodel;
 import com.bjuan.tallerpruebas.model.sales.Shoppingcartitem;
+import com.bjuan.tallerpruebas.model.user.MyUser;
+import com.bjuan.tallerpruebas.model.user.MyUserType;
+import com.bjuan.tallerpruebas.repositories.UserRepository;
 import com.bjuan.tallerpruebas.services.ProductCostHistoryService;
 import com.bjuan.tallerpruebas.services.ProductModelService;
 import com.bjuan.tallerpruebas.services.ProductService;
@@ -25,7 +28,8 @@ public class TallerpruebasApplication {
 	}
 
 	@Bean
-	public CommandLineRunner init(ProductModelService pm, ProductService p, ProductCostHistoryService pch, ShoppingCartItemService sci){
+	public CommandLineRunner init(ProductModelService pm, ProductService p, ProductCostHistoryService pch,
+			ShoppingCartItemService sci, UserRepository u){
 		return args -> {
 			// Model
 			Productmodel productmodel = new Productmodel();
@@ -57,6 +61,19 @@ public class TallerpruebasApplication {
 			scitem.setDatecreated(LocalDate.now());
 			scitem.setAssociatedproduct(1);
 			sci.save(scitem, scitem.getAssociatedproduct());
+
+			//Users
+			MyUser user = new MyUser();
+			user.setUsername("admin");
+			user.setPassword("{noop}admin");
+			user.setUsertype(MyUserType.ADMINISTRATOR);
+			u.save(user);
+
+			user = new MyUser();
+			user.setUsername("operator");
+			user.setPassword("{noop}operator");
+			user.setUsertype(MyUserType.OPERATOR);
+			u.save(user);
 		};
 	}
 }
