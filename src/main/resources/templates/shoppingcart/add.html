@@ -41,7 +41,7 @@
 							<label for="associatedproduct" class="col-form-label">associatedproduct</label> <input
 								type="text" th:field="*{associatedproduct}" class="form-control"
 								placeholder="associatedproduct"> <span
-								th:if="${#fields.hasErrors('associatedproduct')}" th:errors="{associatedproduct}"
+								th:if="${#fields.hasErrors('associatedproduct')}" th:errors="*{associatedproduct}"
 								class="text-danger"></span>
 						</div>
 					</div>

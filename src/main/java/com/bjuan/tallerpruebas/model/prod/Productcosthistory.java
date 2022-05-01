@@ -11,6 +11,10 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQuery;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Positive;
+
+import com.bjuan.tallerpruebas.services.validation.AddGroup;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -27,6 +31,7 @@ public class Productcosthistory implements Serializable {
 	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	private Integer productcosthitoryid;
 
+	@NotNull(groups = {AddGroup.class})
 	private Integer associatedproduct;
 	
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
@@ -35,6 +40,8 @@ public class Productcosthistory implements Serializable {
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDate modifieddate;
 
+	@NotNull(groups = {AddGroup.class})
+	@Positive(groups = {AddGroup.class})
 	private BigDecimal standardcost;
 
 	// bi-directional many-to-one association to Product

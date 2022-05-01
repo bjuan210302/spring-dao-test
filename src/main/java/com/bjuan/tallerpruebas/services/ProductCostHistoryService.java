@@ -20,18 +20,8 @@ public class ProductCostHistoryService {
     }
 
     public void save(Productcosthistory pch, Integer associatedProduct) {
-        if(associatedProduct == null)
-            throw new InvalidParameterException();
-
         if(this.PService.find(associatedProduct).isEmpty())
             throw new InvalidParameterException();
-        
-        // Product p = this.PService.find(associatedProduct).get();
-        // if(p.getSellstartdate().isAfter(pch.getEnddate()))
-        //     throw new InvalidParameterException();
-        
-        // if(p.getListprice().compareTo(new BigDecimal(0)) <= 0)
-        //     throw new InvalidParameterException();
 
         this.repo.save(pch);
     }

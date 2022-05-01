@@ -10,6 +10,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQuery;
 import javax.persistence.SequenceGenerator;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.PastOrPresent;
+import javax.validation.constraints.Positive;
+
+import com.bjuan.tallerpruebas.services.validation.AddGroup;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -28,6 +33,8 @@ public class Shoppingcartitem implements Serializable {
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="SHOPPINGCARTITEM_SHOPPINGCARTITEMID_GENERATOR")
 	private Integer shoppingcartitemid;
 
+	@NotNull(groups = {AddGroup.class})
+	@PastOrPresent(groups = {AddGroup.class})
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDate datecreated;
 
@@ -35,10 +42,13 @@ public class Shoppingcartitem implements Serializable {
 
 	private Integer productid;
 
+	@NotNull(groups = {AddGroup.class})
+	@Positive(groups = {AddGroup.class})
 	private Integer quantity;
 
 	private Integer shoppingcartid;
 
+	@NotNull(groups = {AddGroup.class})
 	private Integer associatedproduct;
 
 	public Shoppingcartitem() {

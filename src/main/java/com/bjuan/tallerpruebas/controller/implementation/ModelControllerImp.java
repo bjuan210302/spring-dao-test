@@ -2,11 +2,15 @@ package com.bjuan.tallerpruebas.controller.implementation;
 
 import com.bjuan.tallerpruebas.model.prod.Productmodel;
 import com.bjuan.tallerpruebas.services.ProductModelService;
+import com.bjuan.tallerpruebas.services.validation.AddGroup;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -32,9 +36,16 @@ public class ModelControllerImp {
 		return "models/add";
 	}
 	@PostMapping("/models/add")
-	public String save(Productmodel pmodel, Model model, @RequestParam(value = "action", required = true) String action) {
-		if (!action.equals("Cancel"))
-			service.save(pmodel);;
+	public String save(  @Validated(AddGroup.class) @ModelAttribute("pmodel") Productmodel pmodel, BindingResult bindingResult,
+	Model model, @RequestParam(value = "action", required = true) String action) {
+		if (action.equals("Cancel")) 
+			return "redirect:/models/";
+
+		if (bindingResult.hasErrors()){
+			return "/models/add";
+		}
+		
+		service.save(pmodel);
 		return "redirect:/models/";
 	}
 }

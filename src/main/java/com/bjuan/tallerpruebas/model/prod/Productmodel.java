@@ -11,6 +11,10 @@ import javax.persistence.Id;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
+
+import com.bjuan.tallerpruebas.services.validation.AddGroup;
 
 /**
  * The persistent class for the productmodel database table.
@@ -28,10 +32,14 @@ public class Productmodel implements Serializable {
 
 	private String catalogdescription;
 
+	@NotBlank(groups = {AddGroup.class})
+	@Size(min = 5,groups = {AddGroup.class})
 	private String instructions;
 
 	private Timestamp modifieddate;
 
+	@NotBlank(groups = {AddGroup.class})
+	@Size(min = 5,groups = {AddGroup.class})
 	private String name;
 
 	private Integer rowguid;

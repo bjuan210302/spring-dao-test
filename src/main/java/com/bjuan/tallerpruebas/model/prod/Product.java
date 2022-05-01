@@ -16,6 +16,12 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Positive;
+import javax.validation.constraints.Size;
+
+import com.bjuan.tallerpruebas.services.validation.AddGroup;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -50,10 +56,13 @@ public class Product implements Serializable {
 
 	private Timestamp modifieddate;
 
+	@NotBlank(groups = {AddGroup.class})
 	private String name;
 
 	private String productline;
 
+	@NotBlank(groups = {AddGroup.class})
+	@Size(min = 1,groups = {AddGroup.class})
 	private String productnumber;
 
 	private Integer reorderpoint;
@@ -68,12 +77,16 @@ public class Product implements Serializable {
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDate sellstartdate;
 
+	@NotNull(groups = {AddGroup.class})
+	@Positive(groups = {AddGroup.class})
 	private Integer size;
 
 	private BigDecimal standardcost;
 
 	private String style;
 
+	@NotNull(groups = {AddGroup.class})
+	@Positive(groups = {AddGroup.class})
 	private BigDecimal weight;
 
 	// bi-directional many-to-one association to Billofmaterial

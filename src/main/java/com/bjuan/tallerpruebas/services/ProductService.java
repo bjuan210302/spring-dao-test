@@ -1,6 +1,5 @@
 package com.bjuan.tallerpruebas.services;
 
-import java.math.BigDecimal;
 import java.security.InvalidParameterException;
 import java.util.Optional;
 
@@ -37,9 +36,6 @@ public class ProductService {
             //Check if category exists
             if (subcategoryObject.isEmpty())
                 throw new InvalidParameterException();
-
-            // Cannot do but should do here
-            // subcategoryObject.get().addProduct(p);
         
         }
 
@@ -49,25 +45,8 @@ public class ProductService {
             //Check if category exists
             if (categoryObject.isEmpty())
                 throw new InvalidParameterException();
-
-            // Cannot do but should do here
-            // Optional<Productsubcategory> subcategoryObject = psc.find(subcategory);
-            // categoryObject.get().addProductsubcategory(subcategoryObject.get());
         }
 
-        // if(p.getSellstartdate().after(p.getSellenddate()))
-        //     throw new InvalidParameterException();
-
-        if(p.getSellstartdate().equals(p.getSellenddate()))
-            throw new InvalidParameterException();
-        
-        if(p.getSize() <= 0)
-            throw new InvalidParameterException();
-        
-        if(p.getWeight().compareTo(new BigDecimal(0)) <= 0)
-            throw new InvalidParameterException();
-        
-        
         this.repo.save(p);
     }
 

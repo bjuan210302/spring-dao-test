@@ -20,17 +20,8 @@ public class ShoppingCartItemService {
     }
 
     public void save(Shoppingcartitem sci, Integer productAssignedID) {
-        if(productAssignedID == null)
-            throw new InvalidParameterException();
-
         if(this.PService.find(productAssignedID).isEmpty())
             throw new InvalidParameterException();
-        
-        if(sci.getQuantity() <= 0)
-            throw new InvalidParameterException();
-        
-        // if(sci.getDatecreated().after(new Timestamp(System.currentTimeMillis())))
-        //     throw new InvalidParameterException();
 
         sci.setProductid(productAssignedID);
         this.repo.save(sci);
