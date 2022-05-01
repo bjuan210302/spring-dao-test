@@ -23,6 +23,11 @@
 				<form action="#" th:action="@{/costhistory/add/}" th:object="${costhistory}"
 					method="post">
 					<div class="row">
+						<div th:if="*{productcosthitoryid != null}" class="form-group col-md-6">
+							<label for="name" class="col-form-label">productcosthitoryid</label> <input
+								type="text" th:field="*{productcosthitoryid}" class="form-control" id="productcosthitoryid"
+								readonly>
+						</div>
 						<div class="form-group col-md-6">
 							<label for="standardcost" class="col-form-label">standardcost</label> <input
 								type="text" th:field="*{standardcost}" class="form-control" id="standardcost"
