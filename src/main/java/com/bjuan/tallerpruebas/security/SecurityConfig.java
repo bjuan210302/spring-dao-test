@@ -15,11 +15,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity httpSecurity) throws Exception {
 
         httpSecurity.authorizeRequests()
-                // .antMatchers("/**").permitAll()
                 .antMatchers("/login/**").permitAll()
                 .antMatchers("/logout/**").permitAll()
-
-                .antMatchers("/**").authenticated().anyRequest().permitAll()
+                .antMatchers("/models/**").hasRole("ADMINISTRATOR")
+                .antMatchers("/products/**").hasRole("ADMINISTRATOR")
+                .antMatchers("/costhistory/**").hasRole("OPERATOR")
+                .antMatchers("/shoppingcart/**").hasRole("OPERATOR")
                 .and()
                 .formLogin()
                 .loginPage("/login")

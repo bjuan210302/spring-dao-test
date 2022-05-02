@@ -38,7 +38,7 @@
 								<td class="text-info" th:text="${instace.standardcost}"></td>
 								<td class="text-info" th:text="${instace.modifieddate}"></td>
 								<td class="text-info" th:text="${instace.enddate}"></td>
-								<td class="text-info" th:text="${instace.associatedproduct}"></td>
+								<td class="text-info" th:text="${@shoppingcartControllerImp.getStringOfProduct(instace.associatedproduct)}"></td>
 								<td><a th:href="@{/costhistory/edit/{id}(id=${instace.productcosthitoryid})}"
 									class="btn btn-primary"><i class="fas fa-user-edit ml-2"></i></a></td>
 							</tr>

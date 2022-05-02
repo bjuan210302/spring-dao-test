@@ -36,11 +36,11 @@
 								class="text-danger"></span>
 						</div>
 						<div class="form-group col-md-6">
-							<label for="associatedproduct" class="col-form-label">associatedproduct</label> <input
-								type="text" th:field="*{associatedproduct}" class="form-control"
-								placeholder="associatedproduct"> <span
-								th:if="${#fields.hasErrors('associatedproduct')}" th:errors="*{associatedproduct}"
-								class="text-danger"></span>
+							<label for="associatedproduct" class="col-form-label">associatedproduct</label> <select
+								class="form-control" th:field="*{associatedproduct}" id="associatedproduct">
+								<option th:each="prod : ${availableproducts}" th:value="${prod.productid}"
+									th:text="${prod.toString}" th:selected="${costhistory.associatedproduct==prod.productid}"></option>
+							</select>
 						</div>
 						<div class="form-group col-md-6">
 							<label for="modifieddate" class="col-form-label">createddate</label>

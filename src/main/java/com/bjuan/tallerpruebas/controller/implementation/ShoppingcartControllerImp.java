@@ -3,6 +3,7 @@ package com.bjuan.tallerpruebas.controller.implementation;
 import java.util.Optional;
 
 import com.bjuan.tallerpruebas.model.sales.Shoppingcartitem;
+import com.bjuan.tallerpruebas.services.ProductService;
 import com.bjuan.tallerpruebas.services.ShoppingCartItemService;
 import com.bjuan.tallerpruebas.services.validation.AddGroup;
 
@@ -21,10 +22,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class ShoppingcartControllerImp {
 
 	ShoppingCartItemService service;
+	ProductService pservice;
 
 	@Autowired
-	public ShoppingcartControllerImp(ShoppingCartItemService service) {
+	public ShoppingcartControllerImp(ShoppingCartItemService service, ProductService pservice) {
 		this.service = service;
+		this.pservice = pservice;
 	}
 
 	@GetMapping("/shoppingcart/")
@@ -36,7 +39,7 @@ public class ShoppingcartControllerImp {
 	@GetMapping("/shoppingcart/add")
 	public String addGet(Model model) {
 		model.addAttribute("shoppingcart", new Shoppingcartitem());
-		model.addAttribute("associatedProduct", 0);
+		model.addAttribute("availableproducts", pservice.findAll());
 		return "shoppingcart/add";
 	}
 	@PostMapping("/shoppingcart/add")
@@ -59,7 +62,12 @@ public class ShoppingcartControllerImp {
 		if (item.isEmpty())
 			throw new IllegalArgumentException("Invalid Id:" + id);
 		
+		model.addAttribute("availableproducts", pservice.findAll());
 		model.addAttribute("shoppingcart", item.get());
 		return "shoppingcart/add";
+	}
+
+	public String getStringOfProduct(Integer id){
+		return this.pservice.find(id).get().toString();
 	}
 }

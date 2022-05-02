@@ -4,6 +4,7 @@ import java.util.Optional;
 
 import com.bjuan.tallerpruebas.model.prod.Productcosthistory;
 import com.bjuan.tallerpruebas.services.ProductCostHistoryService;
+import com.bjuan.tallerpruebas.services.ProductService;
 import com.bjuan.tallerpruebas.services.validation.AddGroup;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,10 +23,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class CosthistoryControllerImp {
 
 	ProductCostHistoryService service;
+	ProductService pservice;
 
 	@Autowired
-	public CosthistoryControllerImp(ProductCostHistoryService service) {
+	public CosthistoryControllerImp(ProductCostHistoryService service, ProductService pservice) {
 		this.service = service;
+		this.pservice = pservice;
 	}
 
 	@GetMapping("/costhistory/")
@@ -37,6 +40,7 @@ public class CosthistoryControllerImp {
 	@GetMapping("/costhistory/add")
 	public String addGet(Model model) {
 		model.addAttribute("costhistory", new Productcosthistory());
+		model.addAttribute("availableproducts", pservice.findAll());
 		return "costhistory/add";
 	}
 	@PostMapping("/costhistory/add")
@@ -63,6 +67,7 @@ public class CosthistoryControllerImp {
 		if (item.isEmpty())
 			throw new IllegalArgumentException("Invalid Id:" + id);
 		
+		model.addAttribute("availableproducts", pservice.findAll());
 		model.addAttribute("costhistory", item.get());
 		return "costhistory/add";
 	}

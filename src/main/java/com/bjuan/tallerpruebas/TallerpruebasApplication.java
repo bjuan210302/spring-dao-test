@@ -46,6 +46,14 @@ public class TallerpruebasApplication {
 			product.setSellstartdate(LocalDate.now());;
 			product.setSellenddate(LocalDate.now().plusDays(10));
 			p.save(product, null, null);
+			product = new Product();
+			product.setName("myOtherproduct");
+			product.setProductnumber("myOtherproductnumber");
+			product.setSize(5);
+			product.setWeight(new BigDecimal(3.0));
+			product.setSellstartdate(LocalDate.now());;
+			product.setSellenddate(LocalDate.now().plusDays(30));
+			p.save(product, null, null);
 
 			// ProductCostHistory
 			Productcosthistory productch = new Productcosthistory();

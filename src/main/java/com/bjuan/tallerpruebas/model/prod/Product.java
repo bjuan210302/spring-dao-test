@@ -149,7 +149,8 @@ public class Product implements Serializable {
 	@OneToMany(mappedBy = "product")
 	private List<Workorder> workorders;
 
-	public Product() {
+	public String toString() {
+		return "[" + this.productid + "] " + this.name;
 	}
 
 	public Billofmaterial addBillofmaterials1(Billofmaterial billofmaterials1) {
