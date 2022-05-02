@@ -18,13 +18,16 @@
 <body>
 	<div class="container my-5">
 		<div class="row">
-			<div class="col-md-6">
+			<div class="col">
 				<h2>Dashborad</h2>
-				<p><a href="/models/"><i class="fas fa-user-edit ml-2"></i> Go to models</a></p>
-				<p><a href="/products/"><i class="fas fa-calendar ml-2"></i> Go to products</a></p>
-				<p><a href="/costhistory/"><i class="fas fa-calendar ml-2"></i> Go to costhistory</a></p>
-				<p><a href="/shoppingcart/"><i class="fas fa-calendar ml-2"></i> Go to shoppingcart</a></p>
-				<a th:href="@{/logout}" value="/logout">Logout</a>
+				<div class="row my-4 ml-1">
+					<p class="mr-4 p-4 border"><a href="/models/"><i class="fa fa-arrow-right"></i> Go to models</a></p>
+					<p class="mr-4 p-4 border"><a href="/products/"><i class="fa fa-arrow-right"></i> Go to products</a></p>
+					<p class="mr-4 p-4 border"><a href="/costhistory/"><i class="fa fa-arrow-right"></i> Go to costhistory</a></p>
+					<p class="mr-4 p-4 border"><a href="/shoppingcart/"><i class="fa fa-arrow-right"></i> Go to shoppingcart</a></p>
+				</div>
+				<p><a th:href="@{/logout}" value="/logout"><i class="fas fa-arrow-circle-left"></i> Logout</a></p>
+				<div th:if="${param.accessdenied}" class="text-danger">Your account is not allowed to go there.</div>
 			</div>
 		</div>
 	</div>
