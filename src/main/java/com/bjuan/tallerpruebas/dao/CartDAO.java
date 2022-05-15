@@ -30,7 +30,7 @@ public class CartDAO {
         entityManager.remove(sci);
     }
 
-    public Shoppingcartitem findById(long sci) {
+    public Shoppingcartitem findById(Integer sci) {
         return entityManager.find(Shoppingcartitem.class, sci);
     }
 

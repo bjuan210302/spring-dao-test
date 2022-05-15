@@ -29,7 +29,7 @@ public class ProductDAO {
         entityManager.remove(p);
     }
 
-    public Product findById(long p) {
+    public Product findById(Integer p) {
         return entityManager.find(Product.class, p);
     }
 

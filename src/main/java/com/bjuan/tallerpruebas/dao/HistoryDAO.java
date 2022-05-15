@@ -30,7 +30,7 @@ public class HistoryDAO {
         entityManager.remove(pch);
     }
 
-    public Productcosthistory findById(long pch) {
+    public Productcosthistory findById(Integer pch) {
         return entityManager.find(Productcosthistory.class, pch);
     }
 

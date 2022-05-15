@@ -25,7 +25,7 @@ public class ModelDAO {
     public void delete(Productmodel pm) {
         entityManager.remove(pm);
     }
-    public Productmodel findById(long pm) {
+    public Productmodel findById(Integer pm) {
         return entityManager.find(Productmodel.class, pm);
     }
     @SuppressWarnings("unchecked")
