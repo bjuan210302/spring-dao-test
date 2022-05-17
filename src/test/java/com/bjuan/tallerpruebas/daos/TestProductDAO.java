@@ -8,6 +8,9 @@ import java.util.List;
 import com.bjuan.tallerpruebas.TallerpruebasApplication;
 import com.bjuan.tallerpruebas.dao.ProductDAO;
 import com.bjuan.tallerpruebas.model.prod.Product;
+import com.bjuan.tallerpruebas.model.prod.Productmodel;
+import com.bjuan.tallerpruebas.model.prod.Productsubcategory;
+import com.bjuan.tallerpruebas.model.prod.Unitmeasure;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -68,6 +71,44 @@ public class TestProductDAO {
         initSubject();
         testedDAO.save(this.subject);
         List<Product> v = testedDAO.findAll();
+        assertNotNull(v);
+        assertFalse(v.isEmpty());
+    }
+
+    @Test
+    @Transactional(readOnly = false, propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
+    public void findBySubcategoryIdTest() {
+        initSubject();
+        Productsubcategory s = new Productsubcategory();
+        this.subject.setProductsubcategory(s);
+        testedDAO.save(this.subject);
+        List<Product> v = testedDAO.findBySubcategoryId(s.getProductsubcategoryid());
+        assertNotNull(v);
+        assertFalse(v.isEmpty());
+    }
+
+    @Test
+    @Transactional(readOnly = false, propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
+    public void findByModelNameTest() {
+        initSubject();
+        Productmodel pm = new Productmodel();
+        pm.setName("test");
+        this.subject.setProductmodel(pm);
+        testedDAO.save(this.subject);
+        List<Product> v = testedDAO.findByModelName(pm.getName());
+        assertNotNull(v);
+        assertFalse(v.isEmpty());
+    }
+
+    // Este tira una exception porque string no es valido para ids? ¯\_(ツ)_/¯
+    @Test
+    @Transactional(readOnly = false, propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
+    public void findByUnitmeasureCodeTest() {
+        initSubject();
+        Unitmeasure u = new Unitmeasure();
+        this.subject.setUnitmeasure2(u);
+        testedDAO.save(this.subject);
+        List<Product> v = testedDAO.findByModelName(u.getUnitmeasurecode());
         assertNotNull(v);
         assertFalse(v.isEmpty());
     }

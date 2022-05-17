@@ -3,6 +3,7 @@ package com.bjuan.tallerpruebas.daos;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import com.bjuan.tallerpruebas.TallerpruebasApplication;
@@ -68,6 +69,29 @@ public class TestCartDAO {
         initSubject();
         testedDAO.save(this.subject);
         List<Shoppingcartitem> v = testedDAO.findAll();
+        assertNotNull(v);
+        assertFalse(v.isEmpty());
+    }
+
+    @Test
+    @Transactional(readOnly = false, propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
+    public void findByProductIdTest() {
+        initSubject();
+        this.subject.setProductid(1);
+        testedDAO.save(this.subject);
+        List<Shoppingcartitem> v = testedDAO.findByProductId(1);
+        assertNotNull(v);
+        assertFalse(v.isEmpty());
+    }
+
+    @Test
+    @Transactional(readOnly = false, propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
+    public void findByCreationDateTest() {
+        initSubject();
+        LocalDate now = LocalDate.now();
+        this.subject.setDatecreated(now);;
+        testedDAO.save(this.subject);
+        List<Shoppingcartitem> v = testedDAO.findByCreationDate(now);
         assertNotNull(v);
         assertFalse(v.isEmpty());
     }

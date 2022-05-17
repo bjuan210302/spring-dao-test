@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -45,8 +46,8 @@ public class Productcosthistory implements Serializable {
 	private BigDecimal standardcost;
 
 	// bi-directional many-to-one association to Product
-	@ManyToOne
-	@JoinColumn(name = "productid", insertable = false, updatable = false)
+	@ManyToOne(cascade=CascadeType.ALL)
+	@JoinColumn(name = "productid", updatable = false)
 	private Product product;
 
 	public Productcosthistory() {

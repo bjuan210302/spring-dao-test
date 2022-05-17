@@ -44,7 +44,7 @@ public class HistoryDAO {
     // producto
     @SuppressWarnings("unchecked")
     public List<Productcosthistory> findByProductId(Integer productid) {
-        String jpql = "SELECT pch FROM Product pch WHERE pch.product.productid = :productid";
+        String jpql = "SELECT pch FROM Productcosthistory pch WHERE pch.product.productid = :productid";
         Query query = entityManager.createQuery(jpql);
         query.setParameter("productid", productid);
         return query.getResultList();
@@ -54,7 +54,7 @@ public class HistoryDAO {
     // de lista
     @SuppressWarnings("unchecked")
     public List<Productcosthistory> findByListPrice(BigDecimal listprice) {
-        String jpql = "SELECT pch FROM Product pch WHERE pch.product.listprice = :listprice";
+        String jpql = "SELECT pch FROM Productcosthistory pch WHERE pch.product.listprice = :listprice";
         Query query = entityManager.createQuery(jpql);
         query.setParameter("listprice", listprice);
         return query.getResultList();

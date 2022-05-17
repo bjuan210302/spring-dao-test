@@ -42,7 +42,7 @@ public class ProductDAO {
     // Permita que los productos puedan buscarse por el id de la subcategoría
     @SuppressWarnings("unchecked")
     public List<Product> findBySubcategoryId(Integer subcategory) {
-        String jpql = "SELECT p FROM Product p WHERE p.productsubcategory.subcategory = :subcategory";
+        String jpql = "SELECT p FROM Product p WHERE p.productsubcategory.productsubcategoryid = :subcategory";
         Query query = entityManager.createQuery(jpql);
         query.setParameter("subcategory", subcategory);
         return query.getResultList();

@@ -99,7 +99,7 @@ public class Product implements Serializable {
 	private List<Billofmaterial> billofmaterials2;
 
 	// bi-directional many-to-one association to Productmodel
-	@ManyToOne
+	@ManyToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name = "productmodelid")
 	private Productmodel productmodel;
 
@@ -114,7 +114,7 @@ public class Product implements Serializable {
 	private Unitmeasure unitmeasure1;
 
 	// bi-directional many-to-one association to Unitmeasure
-	@ManyToOne
+	@ManyToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name = "weightunitmeasurecode")
 	private Unitmeasure unitmeasure2;
 

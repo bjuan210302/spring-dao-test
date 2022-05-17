@@ -8,6 +8,8 @@ import java.util.List;
 
 import com.bjuan.tallerpruebas.TallerpruebasApplication;
 import com.bjuan.tallerpruebas.dao.HistoryDAO;
+import com.bjuan.tallerpruebas.dao.ProductDAO;
+import com.bjuan.tallerpruebas.model.prod.Product;
 import com.bjuan.tallerpruebas.model.prod.Productcosthistory;
 
 import org.junit.jupiter.api.Test;
@@ -26,11 +28,16 @@ public class TestHistoryDAO {
     
     @Autowired
     HistoryDAO testedDAO;
+
+    @Autowired
+    ProductDAO productDAO;
+
     Productcosthistory subject;
 
     @Autowired
-    public TestHistoryDAO(HistoryDAO testedDAO) {
+    public TestHistoryDAO(HistoryDAO testedDAO, ProductDAO productDAO) {
         this.testedDAO = testedDAO;
+        this.productDAO = productDAO;
     }
 
     public void initSubject(){
@@ -69,6 +76,31 @@ public class TestHistoryDAO {
         initSubject();
         testedDAO.save(this.subject);
         List<Productcosthistory> v = testedDAO.findAll();
+        assertNotNull(v);
+        assertFalse(v.isEmpty());
+    }
+
+    @Test
+    @Transactional(readOnly = false, propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
+    public void findByProductIdTest() {
+        initSubject();
+        Product p = new Product();
+        this.subject.setProduct(p);
+        testedDAO.save(this.subject);
+        List<Productcosthistory> v = testedDAO.findByProductId(p.getProductid());
+        assertNotNull(v);
+        assertFalse(v.isEmpty());
+    }
+
+    @Test
+    @Transactional(readOnly = false, propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
+    public void findByCreationDateTest() {
+        initSubject();
+        Product p = new Product();
+        p.setListprice(new BigDecimal(1));
+        this.subject.setProduct(p);
+        testedDAO.save(this.subject);
+        List<Productcosthistory> v = testedDAO.findByListPrice(p.getListprice());
         assertNotNull(v);
         assertFalse(v.isEmpty());
     }

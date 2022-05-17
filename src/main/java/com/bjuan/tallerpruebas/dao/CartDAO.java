@@ -43,7 +43,7 @@ public class CartDAO {
     // Permita que los carritos de compra se puedan buscar por id de producto
     @SuppressWarnings("unchecked")
     public List<Shoppingcartitem> findByProductId(Integer productid) {
-        String jpql = "SELECT sci FROM Product sci WHERE sci.productid = :productid";
+        String jpql = "SELECT sci FROM Shoppingcartitem sci WHERE sci.productid = :productid";
         Query query = entityManager.createQuery(jpql);
         query.setParameter("productid", productid);
         return query.getResultList();
@@ -52,7 +52,7 @@ public class CartDAO {
     // Permita que los carritos de compra se puedan buscar por fecha de creación
     @SuppressWarnings("unchecked")
     public List<Shoppingcartitem> findByCreationDate(LocalDate datecreated) {
-        String jpql = "SELECT sci FROM Product sci WHERE sci.datecreated = :datecreated";
+        String jpql = "SELECT sci FROM Shoppingcartitem sci WHERE sci.datecreated = :datecreated";
         Query query = entityManager.createQuery(jpql);
         query.setParameter("datecreated", datecreated);
         return query.getResultList();
