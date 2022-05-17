@@ -31,6 +31,8 @@ public class TallerpruebasApplication {
 	public CommandLineRunner init(ProductModelService pm, ProductService p, ProductCostHistoryService pch,
 			ShoppingCartItemService sci, UserRepository u){
 		return args -> {
+
+			/*
 			// Model
 			Productmodel productmodel = new Productmodel();
 			productmodel.setName("myProductmodel");
@@ -82,6 +84,7 @@ public class TallerpruebasApplication {
 			user.setPassword("{noop}operator");
 			user.setUsertype(MyUserType.OPERATOR);
 			u.save(user);
+			*/
 		};
 	}
 }

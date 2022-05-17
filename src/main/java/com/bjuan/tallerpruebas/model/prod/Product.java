@@ -6,6 +6,7 @@ import java.sql.Timestamp;
 import java.time.LocalDate;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -103,7 +104,7 @@ public class Product implements Serializable {
 	private Productmodel productmodel;
 
 	// bi-directional many-to-one association to Productsubcategory
-	@ManyToOne
+	@ManyToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name = "productsubcategoryid")
 	private Productsubcategory productsubcategory;
 
@@ -118,7 +119,7 @@ public class Product implements Serializable {
 	private Unitmeasure unitmeasure2;
 
 	// bi-directional many-to-one association to Productcosthistory
-	@OneToMany(mappedBy = "product")
+	@OneToMany(mappedBy = "product", cascade=CascadeType.ALL)
 	private List<Productcosthistory> productcosthistories;
 
 	// bi-directional many-to-one association to Productdocument

@@ -23,7 +23,8 @@ public class AdditionalQueries {
     // al menos un producto en el carrito para esa fecha.
     @SuppressWarnings("unchecked")
     public List<Product> findProductPerCart(LocalDate datecreated) {
-        String jpql = "SELECT p FROM Product p, Shoppingcartitem sci WHERE sci.datecreated = :datecreated AND sci.productid = p.productid ORDER BY p.productsubcategory.productsubcategory ASC";
+        String jpql = "SELECT p FROM Product p, Shoppingcartitem sci WHERE sci.datecreated = :datecreated AND sci.productid = p.productid ORDER BY p.productsubcategory.productsubcategoryid ASC";
+        // String jpql = "SELECT p FROM Product p, Shoppingcartitem sci WHERE sci.datecreated = :datecreated AND sci.productid = p.productid";
         Query query = entityManager.createQuery(jpql);
         query.setParameter("datecreated", datecreated);
         return query.getResultList();
